@@ -1,9 +1,9 @@
 import kv from "@vercel/kv";
 
 export default async function SayHello({ name }: { name: string }) {
-  const kvCache = await kv.json.get(kvKey(name), "$");
-  if (kvCache) {
-    return <p>{kvCache[0].message} from kv</p>;
+  const kvValue = await kv.json.get(kvKey(name), "$");
+  if (kvValue) {
+    return <p>{kvValue[0].message} from kv</p>;
   }
 
   const res = await fetch(
