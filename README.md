@@ -19,7 +19,7 @@ Simple Next.js template that uses [Vercel KV for Redis](https://vercel.com/kv) t
 
 ## Demo
 
-https://kv-redis-starter.vercel.app/
+https://vercel-kv-playground.vercel.app/
 
 ## How to Use
 
