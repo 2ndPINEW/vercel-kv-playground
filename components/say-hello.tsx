@@ -8,7 +8,9 @@ export default async function SayHello({ name }: { name: string }) {
     );
   }
 
-  const res = await fetch(`/api/greeting?name=${name}`);
+  const res = await fetch(
+    `https://vercel-kv-playground.vercel.app/api/greeting?name=${name}`
+  );
   const { message } = await res.json();
 
   await kv.json.set(cacheKey(name), "$", { message });
