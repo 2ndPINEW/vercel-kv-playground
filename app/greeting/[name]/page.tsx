@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 export default function Page({ params }: { params: { name: string } }) {
   return (
-    <main className="">
+    <main>
       <Suspense>
         {/* @ts-expect-error Async Server Component */}
         <SayHello name={params.name} />
