@@ -3,7 +3,9 @@ import kv from "@vercel/kv";
 export default async function SayHello({ name }: { name: string }) {
   const kvCache = await kv.json.get(cacheKey(name), "$");
   if (kvCache) {
-    return createJsx(kvCache[0].message);
+    return (
+      <p className="text-sm text-gray-500">{kvCache[0].message} from kv</p>
+    );
   }
 
   const res = await fetch(`http://localhost:3002/api/greeting?name=${name}`);
@@ -11,11 +13,7 @@ export default async function SayHello({ name }: { name: string }) {
 
   await kv.json.set(cacheKey(name), "$", { message });
 
-  return createJsx(message);
-}
-
-function createJsx(message: string) {
-  return <p className="text-sm text-gray-500">{message}</p>;
+  return <p className="text-sm text-gray-500">{message} from api</p>;
 }
 
 function cacheKey(name: string) {
