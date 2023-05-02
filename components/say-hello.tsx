@@ -8,7 +8,7 @@ export default async function SayHello({ name }: { name: string }) {
     );
   }
 
-  const res = await fetch(`http://localhost:3002/api/greeting?name=${name}`);
+  const res = await fetch(`/api/greeting?name=${name}`);
   const { message } = await res.json();
 
   await kv.json.set(cacheKey(name), "$", { message });
